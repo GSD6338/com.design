@@ -1,0 +1,46 @@
+float maxW = Wind[0];
+float minW = Wind[0];
+float [] N = new float [Wind.length];
+
+for (int i =0; i<Wind.length; i++)
+{
+  if (maxW < Wind[i]) 
+  {
+  maxW=Wind[i];
+  }
+  if (minW>Wind[i])
+  {
+  minW=Wind[i];
+  }
+}
+
+for (int j =1; j<Wind.length; j++)
+{
+  N[j]= (Wind[j]-minW)/(maxW-minW)*100.0;
+}  
+
+for (int h = 100 ; h>0 ; h-=10)
+{
+  for (int i =1; i<Wind.length; i++)
+  {
+    if (i==(Wind.length-1))
+    { 
+      if(N[i]>(h-10)) 
+      {
+      print("|" + D[i] + "\n");
+      }
+      else 
+      { 
+      print("-" + D[i] + "\n");
+      }
+    }
+    else if (N[i]>(h-10))
+    {
+    print("|");
+    }
+    else 
+    {
+    print("-");
+    }
+}
+}
